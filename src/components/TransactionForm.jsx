@@ -3,13 +3,15 @@ import { Plus } from "lucide-react";
 
 function TransactionForm({ onAdd }) {
   const [amount, setAmount] = useState("");
-  const [type, setType] = useState("expence");
+  const [type, setType] = useState("expense");
   const [category, setCategory] = useState("food");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!amount || !date || isNaN(Number(amount))) return;
 
     const newTransaction = {
       id: Date.now(),
@@ -37,12 +39,12 @@ function TransactionForm({ onAdd }) {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         placeholder="Сумма"
-        className="border rounded-xl px-4 py-2 w-full"
+        className="border border-slate-600 bg-slate-800 text-white rounded-xl px-4 py-2 w-full"
       />
       <select
         value={type}
         onChange={(e) => setType(e.target.value)}
-        className="border rounded-lg px-4 py-2 w-full"
+        className="border border-slate-600 bg-slate-800 text-white rounded-xl px-4 py-2 w-full"
       >
         <option value="income">Доход</option>
         <option value="expense">Расход</option>
@@ -50,7 +52,7 @@ function TransactionForm({ onAdd }) {
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="border rounded-lg px-4 py-2 w-full"
+        className="border border-slate-600 bg-slate-800 text-white rounded-xl px-4 py-2 w-full"
       >
         <option value="food">Еда</option>
         <option value="rent">Аренда</option>
@@ -61,15 +63,20 @@ function TransactionForm({ onAdd }) {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Описание"
-        className="border rounded-xl px-4 py-2 w-full"
+        className="border border-slate-600 bg-slate-800 text-white rounded-xl px-4 py-2 w-full"
       />
       <input
         type="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-        className="border rounded-xl px-4 py-2 w-full"
+        className="border border-slate-600 bg-slate-800 text-white rounded-xl px-4 py-2 w-full"
       />
-      <button type="submit">Добавить</button>
+      <button
+        type="submit"
+        className="cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-xl"
+      >
+        Добавить
+      </button>
     </form>
   );
 }
