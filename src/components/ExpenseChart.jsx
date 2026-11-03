@@ -26,13 +26,13 @@ function ExpenseChart({ transactions }) {
         <h2 className="text-xl font-bold text-white mb-4">
           Расходы по категориям
         </h2>
-        <p className="texxt-slate-400">Нет данных для графига</p>
+        <p className="text-slate-400">Нет данных для графига</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-slate-800 rounded-xl p-6">
+    <div className="bg-slate-800 rounded-xl py-6">
       <h2 className="text-xl font-bold text-white mb-4">
         Расходы по категориям
       </h2>
